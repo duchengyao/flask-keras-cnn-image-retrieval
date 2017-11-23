@@ -9,10 +9,10 @@
 
 ### Quick start
 
-* git clone https://github.com/lanternfish-research/cnn-based-trademark-retrieval.git
-* cd cnn-based-trademark-retrieval
+* git clone https://github.com/duchengyao/flask-keras-cnn-image-retrieval.git
+* cd flask-keras-cnn-image-retrieval
 * python create_feature_database_keras.py
-* CUDA_VISIBLE_DEVICES="" python app.py  # CUDA_VISIBLE_DEVICES="" 为了屏蔽GPU
+* CUDA_VISIBLE_DEVICES="" python app.py    # `CUDA_VISIBLE_DEVICES="" 为了屏蔽GPU`
 * 访问 `http://127.0.0.1:19877/`
 
 ```sh
