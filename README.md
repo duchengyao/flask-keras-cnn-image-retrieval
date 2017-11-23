@@ -1,5 +1,7 @@
 # Image Retrieval Engine Based on Keras
 
+![](demo.png)
+
 ### Environment
 
 * Anaconda 3
@@ -10,7 +12,7 @@
 * git clone https://github.com/lanternfish-research/cnn-based-trademark-retrieval.git
 * cd cnn-based-trademark-retrieval
 * python create_feature_database_keras.py
-* python app.py
+* CUDA_VISIBLE_DEVICES="" python app.py  # CUDA_VISIBLE_DEVICES="" 为了屏蔽GPU
 * 访问 `http://127.0.0.1:19877/`
 
 ```sh
@@ -24,4 +26,24 @@
 |── create_feature_database_keras.py 对图像集提取特征，建立索引
 ├── query.py 库内搜索
 └── README.md
+```
+
+-------
+
+下面的代码可以将当前目录的所有jpg文件转换成base64的txt文件
+
+```
+import os
+import base64
+
+abspath = os.path.abspath('.')
+imlist = [f for f in os.listdir(abspath) if f.endswith('.jpg')]
+
+with open(abspath+'/lctmimage.txt', 'w') as f:
+    for img_name in imlist:
+        img_file=open(abspath+'/'+img_name,'rb') #二进制方式打开图文件
+        ls_f=str(base64.b64encode(img_file.read()))[2:-1] #读取文件内容，转换为base64编码
+        
+        img_file.close()
+        f.write("\""+img_name+"\"\t\""+ls_f+"\"\n") #我也不知道为啥同事规定了这么个奇葩格式>_<
 ```
